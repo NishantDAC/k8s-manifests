@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-healthapp
+  labels:
+    app: my-app
+spec:
+  replicas: 2  # Number of pods to run
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: health-care
+        image: nishant796/myproject2:2  # Replace with your image name and tag
+        ports:
+        - containerPort: 8082  # Replace with the port your app listens on
